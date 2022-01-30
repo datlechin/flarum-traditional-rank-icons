@@ -1,0 +1,54 @@
+{
+    "name": "datlechin/flarum-traditional-rank-icons",
+    "description": "Replace cirle badges with rank-styled badges.",
+    "keywords": [
+        "flarum",
+        "flarum-extension"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.2"
+    },
+    "support": {
+        "source": "https://github.com/datlechin/flarum-traditional-rank-icons",
+        "forum": "https://discuss.flarum.org/d/29978"
+    },
+    "authors": [
+        {
+            "name": "Ngo Quoc Dat",
+            "email": "datlechin@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://ngoquocdat.com",
+    "extra": {
+        "flarum-extension": {
+            "title": "Traditional Rank Icons",
+            "category": "feauture",
+            "icon": {
+                "name": "fas fa-certificate",
+                "color": "#fff",
+                "backgroundColor": "#D3241C"
+            }
+        },
+        "flarum-cli": {
+            "modules": {
+                "admin": false,
+                "forum": true,
+                "js": true,
+                "jsCommon": false,
+                "css": true,
+                "locale": false,
+                "gitConf": true,
+                "githubActions": true,
+                "prettier": true,
+                "typescript": false,
+                "bundlewatch": false,
+                "backendTesting": false,
+                "editorConfig": true,
+                "styleci": true
+            }
+        }
+    }
+}
