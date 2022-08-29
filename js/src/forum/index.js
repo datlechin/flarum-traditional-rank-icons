@@ -1,11 +1,9 @@
 import app from 'flarum/forum/app';
-import { extend, override } from 'flarum/common/extend';
+import { override } from 'flarum/common/extend';
 import User from 'flarum/common/models/User';
-import PostUser from 'flarum/forum/components/PostUser';
-import PostStream from 'flarum/forum/components/PostStream';
 import ItemList from 'flarum/common/utils/ItemList';
 import RankBadge from './components/RankBadge';
-import listItems from 'flarum/common/helpers/listItems';
+import Badge from 'flarum/components/Badge';
 
 app.initializers.add('datlechin/flarum-traditional-rank-icons', () => {
   override(User.prototype, 'badges', function () {
@@ -15,6 +13,18 @@ app.initializers.add('datlechin/flarum-traditional-rank-icons', () => {
     groups.forEach((group) => {
       items.add(`group${group?.id()}`, <RankBadge group={group} />);
     });
+
+    // For flarum/suspend
+    if (app.initializers.has('flarum-suspend')) {
+      const until = this.suspendedUntil();
+
+      if (new Date() < until) {
+        items.add(
+          'suspended',
+          <Badge icon="fas fa-ban" type="suspended" label={app.translator.trans('flarum-suspend.forum.user_badge.suspended_tooltip')} />
+        );
+      }
+    }
 
     return items;
   });
