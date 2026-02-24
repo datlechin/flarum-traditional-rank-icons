@@ -1,12 +1,11 @@
 import app from 'flarum/forum/app';
 import { override } from 'flarum/common/extend';
-import User from 'flarum/common/models/User';
 import ItemList from 'flarum/common/utils/ItemList';
+import Badge from 'flarum/common/components/Badge';
 import RankBadge from './components/RankBadge';
-import Badge from 'flarum/components/Badge';
 
 app.initializers.add('datlechin/flarum-traditional-rank-icons', () => {
-  override(User.prototype, 'badges', function () {
+  override('flarum/common/models/User', 'badges', function () {
     const items = new ItemList();
     const groups = this.groups();
 
